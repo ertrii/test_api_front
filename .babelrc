@@ -1,0 +1,25 @@
+{
+  "presets": [
+    // Preset that allows you to use the latest
+    // JavaScript without needing to micromanage
+    // which syntax transforms 
+    "@babel/preset-env",
+    // For render React
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    [
+      //https://babeljs.io/docs/en/babel-plugin-transform-runtime
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ],
+    // for build class properties
+    "@babel/plugin-proposal-class-properties",
+    // reder for styled components
+    "babel-plugin-styled-components",
+    // Hot
+    "react-hot-loader/babel"
+  ]
+}

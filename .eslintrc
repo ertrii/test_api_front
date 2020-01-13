@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+     "./node_modules/standard/eslintrc.json"
+  ],
+  "rules": {
+     "no-console": 1,
+     "camelcase": 0
+  },
+  "env": {
+    "node": true,
+    "jest": true,
+    "mocha": true,
+    "commonjs": true
+  },
+  "globals": {
+     "localStorage": true,
+     "sessionStorage": true,
+     "fetch": true
+  }
+}
