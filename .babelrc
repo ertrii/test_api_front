@@ -18,7 +18,9 @@
     // for build class properties
     "@babel/plugin-proposal-class-properties",
     // reder for styled components
-    "babel-plugin-styled-components",
+    ["babel-plugin-styled-components", {
+      "displayName": true
+    }],
     // Hot
     "react-hot-loader/babel"
   ]

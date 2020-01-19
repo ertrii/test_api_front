@@ -24,7 +24,7 @@ function Pages ({ message, login }) {
         </div>
         <div>
           <Label htmlFor='password'>Password</Label>
-          <Input name='password' required id='passoword' type='password' placeholder='Password' />
+          <Input name='password' required id='password' type='password' placeholder='Password' />
         </div>
         {
           message && <Message><Icon name='warning circle' /><span>{message}</span></Message>

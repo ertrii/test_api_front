@@ -2,6 +2,7 @@ const dotenv = require('dotenv')
 const webpack = require('webpack')
 const path = require('path')
 const webpackMerge = require('webpack-merge')
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 const modeConfig = env => require(`./build-utils/webpack.${env.mode}.js`)(env)
 
@@ -16,6 +17,7 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
 
 module.exports = (env, argv) => {
   return webpackMerge({
+    devtool: 'source-map',
     mode: argv.mode,
     entry: {
       app: './src',
@@ -24,11 +26,15 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'public'),
       publicPath: '/',
-      filename: '[name].bundle.js',
-      chunkFilename: '[name].bundle.js'
+      filename: '[name].js',
+      // sourceMapFilename: '[name].js.map',
+      chunkFilename: '[name].js'
     },
     resolve: {
-      extensions: ['.js', '.jsx']
+      extensions: ['.js', '.jsx'],
+      alias: {
+        'react-dom': '@hot-loader/react-dom'
+      }
     },
     module: {
       rules: [
@@ -60,6 +66,10 @@ module.exports = (env, argv) => {
         background_color: '#ffffff',
         crossorigin: 'use-credentials', // can be null, use-credentials or anonymous
         theme_color: '#000',
+        orientation: 'landscape',
+        display: 'standalone',
+        prefer_related_applications: true,
+        start_url: '.',
         icons: [
           {
             src: path.resolve('src/Assets/img/logo.svg'),
@@ -68,11 +78,35 @@ module.exports = (env, argv) => {
           {
             src: path.resolve('src/Assets/img/logo.svg'),
             size: '1024x1024' // multiple sizes
+          },
+          {
+            src: path.resolve('src/Assets/img/logo.svg'),
+            sizes: [120, 152, 167, 180, 1024],
+            destination: path.join('icons', 'ios'),
+            ios: true
+          },
+          {
+            src: path.resolve('src/Assets/img/logo.svg'),
+            size: 1024,
+            destination: path.join('icons', 'ios'),
+            ios: 'startup'
+          },
+          {
+            src: path.resolve('src/Assets/img/logo.svg'),
+            sizes: [36, 48, 72, 96, 144, 192, 512],
+            destination: path.join('icons', 'android')
           }
-        ]
+        ],
+        ios: {
+          'apple-mobile-web-app-title': 'React Template',
+          'apple-mobile-web-app-status-bar-style': 'black'
+        }
       }),
       // eslint-disable-next-line no-useless-escape
-      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /(en|es)$/)
+      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /(en|es)$/),
+      new ServiceWorkerWebpackPlugin({
+        entry: path.join(__dirname, 'src/sw.js')
+      })
     ]
   }, modeConfig(argv))
 }

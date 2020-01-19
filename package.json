@@ -12,11 +12,18 @@
       "watch": "webpack --watch --colors --mode development",
       "start": "webpack-dev-server --mode development"
    },
-   "keywords": ["React", "Redity", "ERP Web Components", "Styled Components", "Js"],
+   "keywords": [
+      "React",
+      "Redity",
+      "ERP Web Components",
+      "Styled Components",
+      "Js"
+   ],
    "author": "Erick <ertriilive@gmail.com> (https://github.com/ertrii)",
    "license": "MIT",
    "dependencies": {
       "@aventura_tech/advance-erp-web-components": "^2.7.1",
+      "@hot-loader/react-dom": "^16.11.0",
       "@reach/router": "^1.2.1",
       "axios": "^0.19.1",
       "moment": "^2.24.0",
@@ -25,6 +32,7 @@
       "react-dom": "^16.12.0",
       "react-hot-loader": "^4.12.18",
       "redity": "^0.1.0",
+      "serviceworker-webpack-plugin": "^1.0.1",
       "styled-components": "^4.4.1"
    },
    "devDependencies": {
