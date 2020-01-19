@@ -33,7 +33,7 @@
       "react-hot-loader": "^4.12.18",
       "redity": "^0.1.0",
       "serviceworker-webpack-plugin": "^1.0.1",
-      "styled-components": "^4.4.1"
+      "styled-components": "^5.0.0"
    },
    "devDependencies": {
       "@babel/cli": "^7.8.0",
