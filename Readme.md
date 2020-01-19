@@ -7,6 +7,10 @@ React Template
 git clone https://github.com/Aventura-Tech/React_Template.git
 ```
 
+```
+npm install
+```
+
 Create `.env` files and write this. For the moment is not required a value for this
 ```
 API_BASE_URL=
@@ -134,7 +138,7 @@ const Session = lazy(() => import('../pages/Session'))
 
 ### <a>Register Model</a>
 
-In `/src/App/Route.jsx` you can register yours models for each Pages
+In `/src/App/Register.js` you can register yours models for each Pages
 
 ```
 |- Pages
@@ -275,3 +279,4 @@ describe('Home', () => {
 * [GitHub - gaearon/react-hot-loader: Tweak React components in real time.](https://github.com/gaearon/react-hot-loader)
 * [Using dotenv with Jest - Florian Hämmerle - Medium](https://medium.com/@lusbuab/using-dotenv-with-jest-7e735b34e55f)
 * [GitHub - webpack-contrib/copy-webpack-plugin: Copy files and directories with webpack](https://github.com/webpack-contrib/copy-webpack-plugin)
+* [Workbox webpack Plugins  \|  Google Developers](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin)
