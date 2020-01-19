@@ -33,7 +33,8 @@ module.exports = (env, argv) => {
     resolve: {
       extensions: ['.js', '.jsx'],
       alias: {
-        'react-dom': '@hot-loader/react-dom'
+        'react-dom': '@hot-loader/react-dom',
+        'styled-components': require.resolve('styled-components')
       }
     },
     module: {
