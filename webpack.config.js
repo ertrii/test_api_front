@@ -2,7 +2,6 @@ const dotenv = require('dotenv')
 const webpack = require('webpack')
 const path = require('path')
 const webpackMerge = require('webpack-merge')
-const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 const modeConfig = env => require(`./build-utils/webpack.${env.mode}.js`)(env)
 
@@ -104,10 +103,7 @@ module.exports = (env, argv) => {
         }
       }),
       // eslint-disable-next-line no-useless-escape
-      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /(en|es)$/),
-      new ServiceWorkerWebpackPlugin({
-        entry: path.join(__dirname, 'src/sw.js')
-      })
+      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /(en|es)$/)
     ]
   }, modeConfig(argv))
 }

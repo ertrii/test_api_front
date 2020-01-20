@@ -1,6 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin')
+const path = require('path')
 
 module.exports = () => ({
   performance: {
@@ -43,6 +45,9 @@ module.exports = () => ({
     }),
     new CopyPlugin([
       { from: './.htaccess', to: './' }
-    ])
+    ]),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, 'src/sw.js')
+    })
   ]
 })
